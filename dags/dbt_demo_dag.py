@@ -17,12 +17,6 @@ from airflow.models import Variable
 from airflow.hooks.base import BaseHook
 from airflow.exceptions import AirflowException
 
-doc_md_DAG = """
-### This dag is set to run the Caboodle DBT Project Only. 
-[CABOODLE BITBUCKET LINK](https://bitbucket.spectrum-health.org:7991/stash/projects/SNOW/repos/ida_epic_caboodle/browse)
-
-"""
-
 default_args = {
     'email': ['eric.venlet@snowflake.com'], #
     'email_on_failure': True,
@@ -31,17 +25,17 @@ default_args = {
 
 @dag(
     dag_id="dbt_local_demo_dag",
-    schedule="00 8 * * *",
+    schedule=None,
     start_date=pendulum.datetime(2021, 1, 1, tz="UTC"),
     catchup=False,
-    tags=["care","caboodle","epic"],
+    tags=["jaffle_shop","dbt"],
 )
-def snowflake_epic_caboodle():
+def jaffle_shop():
     # Get all fields from variable
     dbt_vars = Variable.get("snowflake_ida_epic_caboodle", default_var=[], deserialize_json=True)
 
     # Retrieving connection detailsF
-    connection = BaseHook.get_connection(conn_id=dbt_vars["airflow_connection_id"])
+    connection = BaseHook.get_connection(conn_id='snowflake_db')
     extra = connection.extra_dejson
     password=connection.password
     user=connection.login
@@ -130,3 +124,4 @@ def snowflake_epic_caboodle():
     run = callable_virtualenv(user, password, sfk_schema, sfk_database, sfk_role, sfk_wh, sfk_acct, dbt_vars)
 
     run 
+jaffle_shop()

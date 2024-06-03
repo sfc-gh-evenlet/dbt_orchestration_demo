@@ -6,6 +6,7 @@ The primary objective of this project is to **demonstrate various methods to orc
 
 - Integration patterns between dbt and Airflow.
 - Techniques to optimize the execution of dbt jobs within Airflow DAGs.
+- ** This project utilizes the [Astro CLI](https://www.astronomer.io/docs/astro/cli/overview) and Docker for running Airflow. If you are running a different flavor of Airflow, copy the content in the dags folder to your development environment and ensure you have the needed packages in your [requirements.txt](https://github.com/sfc-gh-evenlet/dbt_orchestration_demo/blob/main/requirements.txt)
 
 ## Why dbt with Airflow?
 
