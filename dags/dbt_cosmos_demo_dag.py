@@ -13,7 +13,7 @@ profile_config = ProfileConfig(
 )
 DEFAULT_DBT_ROOT_PATH = Path(__file__).parent / "dbt" 
 DBT_ROOT_PATH = Path(os.getenv("DBT_ROOT_PATH", DEFAULT_DBT_ROOT_PATH)) 
-my_cosmos_dag = DbtDag(
+local_cosmos_dag = DbtDag(
     project_config=ProjectConfig(
         "/usr/local/airflow/dags/dbt/jaffle-shop-classic",
     ),
@@ -29,24 +29,6 @@ my_cosmos_dag = DbtDag(
     schedule_interval=None,
     start_date=datetime(2023, 1, 1),
     catchup=False,
-    dag_id="my_cosmos_dag",
+    dag_id="local_cosmos_dbt_dag",
     default_args={"retries": 2},
 )
-
-# basic_cosmos_dag = DbtDag( 
-#     # dbt/cosmos-specific parameters 
-#     project_config=ProjectConfig( 
-#         DBT_ROOT_PATH / "jaffle_shop", 
-#     ), 
-#     profile_config=profile_config, 
-#     operator_args={ 
-#         "install_deps": True,  # install any necessary dependencies before running any dbt command 
-#         "full_refresh": True,  # used only in dbt commands that support this flag 
-#     }, 
-#     # normal dag parameters 
-#     schedule_interval=None, 
-#     start_date=datetime(2023, 1, 1), 
-#     catchup=False, 
-#     dag_id="basic_cosmos_dag", 
-#     default_args={"retries": 2}, 
-# ) 

@@ -20,7 +20,10 @@ Leveraging the Airflow with dbt's data transformation capabilities offers:
 
 This repository contains:
 
-- Sample jaffle_shop dbt model and Airflow DAGs.
+- Sample [jaffle_shop](https://github.com/sfc-gh-evenlet/dbt_orchestration_demo/tree/main/dags/dbt/jaffle-shop-classic) dbt model
+- [dags/dbt_cosmos_demo_dag.py](https://github.com/sfc-gh-evenlet/dbt_orchestration_demo/blob/main/dags/dbt_cosmos_demo_dag.py): dag demonstrating the usage of dbt Cosmos for orchestrating
+- [dags/dbt_bash_demo_dag.py](https://github.com/sfc-gh-evenlet/dbt_orchestration_demo/blob/main/dags/dbt_bash_demo_dag.py): dag demonstrating the usage of the bash task for orchestrating dbt
+- [dags/dbt_virtual_python_demo_dag.py](https://github.com/sfc-gh-evenlet/dbt_orchestration_demo/blob/main/dags/dbt_virtual_python_demo_dag.py): dag demonstrating the usage of the virtual python operator and DbtRunner to orchestrate dbt
 
 ## Getting Started with Orchestrating dbt using Airflow
 
