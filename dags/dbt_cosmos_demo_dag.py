@@ -15,7 +15,7 @@ DEFAULT_DBT_ROOT_PATH = Path(__file__).parent / "dbt"
 DBT_ROOT_PATH = Path(os.getenv("DBT_ROOT_PATH", DEFAULT_DBT_ROOT_PATH)) 
 local_cosmos_dag = DbtDag(
     project_config=ProjectConfig(
-        "/usr/local/airflow/dags/dbt/jaffle-shop-classic",
+        "/usr/local/airflow/dags/dbt/jaffle-shop",
     ),
     profile_config=profile_config,
     execution_config=ExecutionConfig(
@@ -24,7 +24,7 @@ local_cosmos_dag = DbtDag(
     # normal dag parameters
     operator_args={
         'install_deps': True,
-        'full_refresh': False
+        'full_refresh': True
     },
     schedule_interval=None,
     start_date=datetime(2023, 1, 1),

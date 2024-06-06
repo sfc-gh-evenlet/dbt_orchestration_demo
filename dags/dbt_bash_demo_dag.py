@@ -30,7 +30,7 @@ def jaffle_shop():
     dbt_vars = {
                     "dbt_commands":['build'], 
                     "profiles_dir":"/usr/local/airflow/dags/.dbt", 
-                    "project_dir":"/usr/local/airflow/dags/dbt/jaffle-shop-classic",
+                    "project_dir":"/usr/local/airflow/dags/dbt/jaffle-shop",
                     "target":"dev"
         }
 
